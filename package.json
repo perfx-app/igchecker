@@ -1,0 +1,57 @@
+{
+  "name": "ig-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": { "start": "node index.js" },
+  "dependencies": { "express": "*", "cors": "*" }
+}
+```
+7. Commit (save) that too
+
+**Now deploy it on Railway (the free internet computer):**
+
+1. Go to **railway.app** → sign up with your GitHub account
+2. Click **"New Project"** → **"Deploy from GitHub repo"** → pick `ig-backend`
+3. Railway will automatically start running your code — wait ~1 minute
+4. Click on your project → go to the **"Variables"** tab → click **"Add Variable"** twice:
+   - Variable name: `APP_ID` → value: your App ID from Step 1
+   - Variable name: `APP_SECRET` → value: your App Secret from Step 1
+5. Click **"Settings"** tab → scroll to **"Networking"** → click **"Generate Domain"**
+6. Railway gives you a URL like `ig-backend-production.up.railway.app` — **copy this URL** 🎉
+
+---
+
+## 📱 WORKER 3 — Plugging everything into the app
+
+Now you connect all three workers together. This is the easy part!
+
+1. Open the app I built (scroll up in this chat)
+2. In the **Setup screen**, fill in:
+   - **Instagram App ID** → paste the App ID from Worker 1
+   - **Backend URL** → paste the Railway URL from Worker 2
+3. Click **Save & Continue**
+4. Click **Continue with Instagram**
+5. Instagram opens → log in → tap **Allow**
+6. You land back on the app and see your **real live Instagram data** 🎉
+
+---
+
+## 🗺️ The whole thing as a story
+```
+You click "Connect with Instagram"
+        ↓
+Instagram says "who are you?" → you log in
+        ↓
+Instagram gives your app a secret one-time CODE
+        ↓
+Your app sends that code to YOUR Railway server
+        ↓
+Railway whispers your App Secret to Instagram
+and trades the code for a real ACCESS TOKEN
+        ↓
+Your app uses that token to ask Instagram:
+"Hey, give me this user's posts and profile!"
+        ↓
+Instagram sends back real data 📊
+        ↓
+Your beautiful dashboard lights up! 🎉
